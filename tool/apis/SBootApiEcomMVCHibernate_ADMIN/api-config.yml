@@ -1,0 +1,4 @@
+name: SBootApiEcomMVCHibernate_ADMIN
+specificationFileName: SBootApiEcomMVCHibernate_ADMIN.json
+authenticationCommands:
+  default: python3 apis/SBootApiEcomMVCHibernate/scripts/auth.py

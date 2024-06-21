@@ -1,0 +1,2050 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "http://localhost:8080"
+        }
+    ],
+    "info": {
+        "title": "REST API",
+        "version": "",
+        "description": "REST API"
+    },
+    "paths": {
+        "/api/auth/register": {
+            "post": {
+                "description": "",
+                "operationId": "em24",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.base.SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD_REQUEST",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.base.ErrorResponse",
+                                    "properties": {
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    },
+                                    "passswordConfirmation": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "username": {
+                                        "type": "string"
+                                    }
+                                },
+                                "maxProperties": 6
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "post": {
+                "description": "",
+                "operationId": "em0",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.base.SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD_REQUEST",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.base.ErrorResponse",
+                                    "properties": {
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "firstName": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "passswordConfirmation": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "required": true
+                                    }
+                                },
+                                "maxProperties": 6
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/orders": {
+            "get": {
+                "description": "",
+                "operationId": "em39",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 30
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.orders.OrderListResponse",
+                                    "properties": {
+                                        "pageMeta": {
+                                            "type": "object",
+                                            "title": "com.melardev.spring.shoppingcartweb.dtos.response.shared.PageMeta",
+                                            "properties": {
+                                                "hasNextPage": {
+                                                    "type": "boolean"
+                                                },
+                                                "hasPrevPage": {
+                                                    "type": "boolean"
+                                                },
+                                                "requestedPageSize": {
+                                                    "type": "integer"
+                                                },
+                                                "currentPageNumber": {
+                                                    "type": "integer"
+                                                },
+                                                "numberOfPages": {
+                                                    "type": "integer"
+                                                },
+                                                "currentItemsCount": {
+                                                    "type": "integer"
+                                                },
+                                                "totalItemsCount": {
+                                                    "type": "integer"
+                                                },
+                                                "offset": {
+                                                    "type": "integer"
+                                                },
+                                                "nextPageNumber": {
+                                                    "type": "integer"
+                                                },
+                                                "prevPageNumber": {
+                                                    "type": "integer"
+                                                },
+                                                "nextPageUrl": {
+                                                    "type": "string"
+                                                },
+                                                "prevPageUrl": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "orderStatus": {
+                                                        "type": "string"
+                                                    },
+                                                    "trackingNumber": {
+                                                        "type": "string"
+                                                    },
+                                                    "orderItemsCount": {
+                                                        "type": "integer"
+                                                    },
+                                                    "total": {
+                                                        "type": "number"
+                                                    },
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "orderAddressInfoDto": {
+                                                        "type": "object",
+                                                        "title": "com.melardev.spring.shoppingcartweb.dtos.response.orders.partials.OrderAddressInfoDto",
+                                                        "properties": {
+                                                            "firstName": {
+                                                                "type": "string"
+                                                            },
+                                                            "lastName": {
+                                                                "type": "string"
+                                                            },
+                                                            "address": {
+                                                                "type": "string"
+                                                            },
+                                                            "city": {
+                                                                "type": "string"
+                                                            },
+                                                            "country": {
+                                                                "type": "string"
+                                                            },
+                                                            "zipCode": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                }
+            }
+        },
+        "/api/admin/orders/{id}": {
+            "put": {
+                "description": "",
+                "operationId": "em40",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.orders.OrderSingleResponse",
+                                    "properties": {
+                                        "orderStatus": {
+                                            "type": "string"
+                                        },
+                                        "trackingNumber": {
+                                            "type": "string"
+                                        },
+                                        "orderItems": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        },
+                                        "orderAddressInfoDto": {
+                                            "type": "object",
+                                            "title": "com.melardev.spring.shoppingcartweb.dtos.response.orders.partials.OrderAddressInfoDto",
+                                            "properties": {
+                                                "firstName": {
+                                                    "type": "string"
+                                                },
+                                                "lastName": {
+                                                    "type": "string"
+                                                },
+                                                "address": {
+                                                    "type": "string"
+                                                },
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "country": {
+                                                    "type": "string"
+                                                },
+                                                "zipCode": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "order_status": {
+                                        "type": "string",
+                                        "enum": ["PROCESSED", "DELIVERED", "SHIPPED"],
+                                        "required": true
+                                    },
+                                    "tracking_number": {
+                                        "type": "string",
+                                        "required": true
+                                    }
+                                },
+                                "maxProperties": 2
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/roles": {
+            "get": {
+                "description": "",
+                "operationId": "em34",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 100
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.admin.RolesDtoResponse",
+                                    "properties": {
+                                        "pageMeta": {
+                                            "type": "object",
+                                            "title": "com.melardev.spring.shoppingcartweb.dtos.response.shared.PageMeta",
+                                            "properties": {
+                                                "hasNextPage": {
+                                                    "type": "boolean"
+                                                },
+                                                "hasPrevPage": {
+                                                    "type": "boolean"
+                                                },
+                                                "requestedPageSize": {
+                                                    "type": "integer"
+                                                },
+                                                "currentPageNumber": {
+                                                    "type": "integer"
+                                                },
+                                                "numberOfPages": {
+                                                    "type": "integer"
+                                                },
+                                                "currentItemsCount": {
+                                                    "type": "integer"
+                                                },
+                                                "totalItemsCount": {
+                                                    "type": "integer"
+                                                },
+                                                "offset": {
+                                                    "type": "integer"
+                                                },
+                                                "nextPageNumber": {
+                                                    "type": "integer"
+                                                },
+                                                "prevPageNumber": {
+                                                    "type": "integer"
+                                                },
+                                                "nextPageUrl": {
+                                                    "type": "string"
+                                                },
+                                                "prevPageUrl": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "roles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "users_belonging_to_this": {
+                                                        "type": "integer"
+                                                    },
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                }
+            },
+            "post": {
+                "description": "",
+                "operationId": "em37",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.roles.RoleDetailsResponse",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "usersBelongingToThis": {
+                                            "type": "integer"
+                                        },
+                                        "updatedAt": {
+                                            "type": "object",
+                                            "title": "java.time.ZonedDateTime",
+                                            "properties": {
+                                                "dateTime": {
+                                                    "type": "object",
+                                                    "title": "java.time.LocalDateTime",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalDate",
+                                                            "properties": {
+                                                                "year": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "month": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "day": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "time": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalTime",
+                                                            "properties": {
+                                                                "hour": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "minute": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "second": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "nano": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "offset": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneOffset",
+                                                    "properties": {
+                                                        "totalSeconds": {
+                                                            "type": "integer"
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "zone": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneId",
+                                                    "properties": {}
+                                                }
+                                            }
+                                        },
+                                        "createdAt": {
+                                            "type": "object",
+                                            "title": "java.time.ZonedDateTime",
+                                            "properties": {
+                                                "dateTime": {
+                                                    "type": "object",
+                                                    "title": "java.time.LocalDateTime",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalDate",
+                                                            "properties": {
+                                                                "year": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "month": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "day": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "time": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalTime",
+                                                            "properties": {
+                                                                "hour": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "minute": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "second": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "nano": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "offset": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneOffset",
+                                                    "properties": {
+                                                        "totalSeconds": {
+                                                            "type": "integer"
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "zone": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneId",
+                                                    "properties": {}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "required": true
+                                    }
+                                },
+                                "maxProperties": 3
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/roles/by_id/{id}": {
+            "get": {
+                "description": "",
+                "operationId": "em36",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.roles.RoleDetailsResponse",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "usersBelongingToThis": {
+                                            "type": "integer"
+                                        },
+                                        "updatedAt": {
+                                            "type": "object",
+                                            "title": "java.time.ZonedDateTime",
+                                            "properties": {
+                                                "dateTime": {
+                                                    "type": "object",
+                                                    "title": "java.time.LocalDateTime",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalDate",
+                                                            "properties": {
+                                                                "year": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "month": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "day": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "time": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalTime",
+                                                            "properties": {
+                                                                "hour": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "minute": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "second": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "nano": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "offset": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneOffset",
+                                                    "properties": {
+                                                        "totalSeconds": {
+                                                            "type": "integer"
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "zone": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneId",
+                                                    "properties": {}
+                                                }
+                                            }
+                                        },
+                                        "createdAt": {
+                                            "type": "object",
+                                            "title": "java.time.ZonedDateTime",
+                                            "properties": {
+                                                "dateTime": {
+                                                    "type": "object",
+                                                    "title": "java.time.LocalDateTime",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalDate",
+                                                            "properties": {
+                                                                "year": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "month": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "day": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "time": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalTime",
+                                                            "properties": {
+                                                                "hour": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "minute": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "second": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "nano": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "offset": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneOffset",
+                                                    "properties": {
+                                                        "totalSeconds": {
+                                                            "type": "integer"
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "zone": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneId",
+                                                    "properties": {}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                }
+            }
+        },
+        "/api/admin/roles/by_name/{name}": {
+            "get": {
+                "description": "",
+                "operationId": "em35",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.roles.RoleDetailsResponse",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "usersBelongingToThis": {
+                                            "type": "integer"
+                                        },
+                                        "updatedAt": {
+                                            "type": "object",
+                                            "title": "java.time.ZonedDateTime",
+                                            "properties": {
+                                                "dateTime": {
+                                                    "type": "object",
+                                                    "title": "java.time.LocalDateTime",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalDate",
+                                                            "properties": {
+                                                                "year": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "month": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "day": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "time": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalTime",
+                                                            "properties": {
+                                                                "hour": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "minute": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "second": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "nano": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "offset": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneOffset",
+                                                    "properties": {
+                                                        "totalSeconds": {
+                                                            "type": "integer"
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "zone": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneId",
+                                                    "properties": {}
+                                                }
+                                            }
+                                        },
+                                        "createdAt": {
+                                            "type": "object",
+                                            "title": "java.time.ZonedDateTime",
+                                            "properties": {
+                                                "dateTime": {
+                                                    "type": "object",
+                                                    "title": "java.time.LocalDateTime",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalDate",
+                                                            "properties": {
+                                                                "year": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "month": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "day": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "time": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalTime",
+                                                            "properties": {
+                                                                "hour": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "minute": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "second": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "nano": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "offset": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneOffset",
+                                                    "properties": {
+                                                        "totalSeconds": {
+                                                            "type": "integer"
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "zone": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneId",
+                                                    "properties": {}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL_SERVER_ERROR"
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                }
+            }
+        },
+        "/api/admin/roles/{id}": {
+            "put": {
+                "description": "",
+                "operationId": "em38",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.roles.RoleDetailsResponse",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "usersBelongingToThis": {
+                                            "type": "integer"
+                                        },
+                                        "updatedAt": {
+                                            "type": "object",
+                                            "title": "java.time.ZonedDateTime",
+                                            "properties": {
+                                                "dateTime": {
+                                                    "type": "object",
+                                                    "title": "java.time.LocalDateTime",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalDate",
+                                                            "properties": {
+                                                                "year": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "month": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "day": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "time": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalTime",
+                                                            "properties": {
+                                                                "hour": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "minute": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "second": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "nano": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "offset": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneOffset",
+                                                    "properties": {
+                                                        "totalSeconds": {
+                                                            "type": "integer"
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "zone": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneId",
+                                                    "properties": {}
+                                                }
+                                            }
+                                        },
+                                        "createdAt": {
+                                            "type": "object",
+                                            "title": "java.time.ZonedDateTime",
+                                            "properties": {
+                                                "dateTime": {
+                                                    "type": "object",
+                                                    "title": "java.time.LocalDateTime",
+                                                    "properties": {
+                                                        "date": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalDate",
+                                                            "properties": {
+                                                                "year": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "month": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "day": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "time": {
+                                                            "type": "object",
+                                                            "title": "java.time.LocalTime",
+                                                            "properties": {
+                                                                "hour": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "minute": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "second": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "nano": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "offset": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneOffset",
+                                                    "properties": {
+                                                        "totalSeconds": {
+                                                            "type": "integer"
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "zone": {
+                                                    "type": "object",
+                                                    "title": "java.time.ZoneId",
+                                                    "properties": {}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "required": true
+                                    }
+                                },
+                                "maxProperties": 3
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/users": {
+            "get": {
+                "description": "",
+                "operationId": "em29",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 30
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.admin.dtos.users.AdminUsersListResponse",
+                                    "properties": {
+                                        "users": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "username": {
+                                                        "type": "string"
+                                                    },
+                                                    "email": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "pageMeta": {
+                                            "type": "object",
+                                            "title": "com.melardev.spring.shoppingcartweb.dtos.response.shared.PageMeta",
+                                            "properties": {
+                                                "hasNextPage": {
+                                                    "type": "boolean"
+                                                },
+                                                "hasPrevPage": {
+                                                    "type": "boolean"
+                                                },
+                                                "requestedPageSize": {
+                                                    "type": "integer"
+                                                },
+                                                "currentPageNumber": {
+                                                    "type": "integer"
+                                                },
+                                                "numberOfPages": {
+                                                    "type": "integer"
+                                                },
+                                                "currentItemsCount": {
+                                                    "type": "integer"
+                                                },
+                                                "totalItemsCount": {
+                                                    "type": "integer"
+                                                },
+                                                "offset": {
+                                                    "type": "integer"
+                                                },
+                                                "nextPageNumber": {
+                                                    "type": "integer"
+                                                },
+                                                "prevPageNumber": {
+                                                    "type": "integer"
+                                                },
+                                                "nextPageUrl": {
+                                                    "type": "string"
+                                                },
+                                                "prevPageUrl": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                }
+            },
+            "post": {
+                "description": "",
+                "operationId": "em30",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.UserDetailsDto",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "username": {
+                                            "type": "string"
+                                        },
+                                        "firstName": {
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "roles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "firstName": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "passwordConfirmation": {
+                                        "type": "string"
+                                    },
+                                    "roles": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "required": true
+                                    }
+                                },
+                                "maxProperties": 7
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/users/{id}": {
+            "get": {
+                "description": "",
+                "operationId": "em31",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.UserDetailsDto",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "username": {
+                                            "type": "string"
+                                        },
+                                        "firstName": {
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "roles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                }
+            },
+            "put": {
+                "description": "",
+                "operationId": "em32",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.UserDetailsDto",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "username": {
+                                            "type": "string"
+                                        },
+                                        "firstName": {
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "roles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD_REQUEST",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.base.ErrorResponse",
+                                    "properties": {
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "firstName": {
+                                        "type": "string",
+                                        "required": true,
+                                        "min": 2,
+                                        "max": 255
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "passwordConfirmation": {
+                                        "type": "string"
+                                    },
+                                    "roles": {
+                                        "type": "string",
+                                        "required": true
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "required": true,
+                                        "min": 4,
+                                        "max": 255
+                                    }
+                                },
+                                "maxProperties": 7
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/users/{id}/delete": {
+            "post": {
+                "description": "",
+                "operationId": "em33",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                }
+            }
+        },
+        "/api/admin": {
+            "get": {
+                "description": "",
+                "operationId": "em41",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 5
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.admin.AdminDashboardResponse",
+                                    "properties": {
+                                        "productDataSection": {
+                                            "type": "object",
+                                            "title": "com.melardev.spring.shoppingcartweb.dtos.response.products.ProductListResponse",
+                                            "properties": {
+                                                "pageMeta": {
+                                                    "type": "object",
+                                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.shared.PageMeta",
+                                                    "properties": {
+                                                        "hasNextPage": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "hasPrevPage": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "requestedPageSize": {
+                                                            "type": "integer"
+                                                        },
+                                                        "currentPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "numberOfPages": {
+                                                            "type": "integer"
+                                                        },
+                                                        "currentItemsCount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "totalItemsCount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "offset": {
+                                                            "type": "integer"
+                                                        },
+                                                        "nextPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "prevPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "nextPageUrl": {
+                                                            "type": "string"
+                                                        },
+                                                        "prevPageUrl": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "products": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "commentsData": {
+                                            "type": "object",
+                                            "title": "com.melardev.spring.shoppingcartweb.dtos.response.comments.CommentListResponse",
+                                            "properties": {
+                                                "pageMeta": {
+                                                    "type": "object",
+                                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.shared.PageMeta",
+                                                    "properties": {
+                                                        "hasNextPage": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "hasPrevPage": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "requestedPageSize": {
+                                                            "type": "integer"
+                                                        },
+                                                        "currentPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "numberOfPages": {
+                                                            "type": "integer"
+                                                        },
+                                                        "currentItemsCount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "totalItemsCount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "offset": {
+                                                            "type": "integer"
+                                                        },
+                                                        "nextPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "prevPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "nextPageUrl": {
+                                                            "type": "string"
+                                                        },
+                                                        "prevPageUrl": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "comments": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "comments": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "success": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "full_message": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "updated_at": {
+                                                                        "type": "date-time"
+                                                                    },
+                                                                    "created_at": {
+                                                                        "type": "date-time"
+                                                                    },
+                                                                    "id": {
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "content": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "orderDataSection": {
+                                            "type": "object",
+                                            "title": "com.melardev.spring.shoppingcartweb.dtos.response.orders.OrderListResponse",
+                                            "properties": {
+                                                "pageMeta": {
+                                                    "type": "object",
+                                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.shared.PageMeta",
+                                                    "properties": {
+                                                        "hasNextPage": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "hasPrevPage": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "requestedPageSize": {
+                                                            "type": "integer"
+                                                        },
+                                                        "currentPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "numberOfPages": {
+                                                            "type": "integer"
+                                                        },
+                                                        "currentItemsCount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "totalItemsCount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "offset": {
+                                                            "type": "integer"
+                                                        },
+                                                        "nextPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "prevPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "nextPageUrl": {
+                                                            "type": "string"
+                                                        },
+                                                        "prevPageUrl": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "orders": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "orderStatus": {
+                                                                "type": "string"
+                                                            },
+                                                            "trackingNumber": {
+                                                                "type": "string"
+                                                            },
+                                                            "orderItemsCount": {
+                                                                "type": "integer"
+                                                            },
+                                                            "total": {
+                                                                "type": "number"
+                                                            },
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "orderAddressInfoDto": {
+                                                                "type": "object",
+                                                                "title": "com.melardev.spring.shoppingcartweb.dtos.response.orders.partials.OrderAddressInfoDto",
+                                                                "properties": {
+                                                                    "firstName": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "lastName": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "address": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "city": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "country": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "zipCode": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "usersData": {
+                                            "type": "object",
+                                            "title": "com.melardev.spring.shoppingcartweb.dtos.response.admin.UsersDataSection",
+                                            "properties": {
+                                                "users": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "username": {
+                                                                "type": "string"
+                                                            },
+                                                            "email": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "pageMeta": {
+                                                    "type": "object",
+                                                    "title": "com.melardev.spring.shoppingcartweb.dtos.response.shared.PageMeta",
+                                                    "properties": {
+                                                        "hasNextPage": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "hasPrevPage": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "requestedPageSize": {
+                                                            "type": "integer"
+                                                        },
+                                                        "currentPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "numberOfPages": {
+                                                            "type": "integer"
+                                                        },
+                                                        "currentItemsCount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "totalItemsCount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "offset": {
+                                                            "type": "integer"
+                                                        },
+                                                        "nextPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "prevPageNumber": {
+                                                            "type": "integer"
+                                                        },
+                                                        "nextPageUrl": {
+                                                            "type": "string"
+                                                        },
+                                                        "prevPageUrl": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "others"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "x-endpoint-interdependence": {},
+        "x-global-variables-info": {
+            "g0": {
+                "name": "BAD_REQUEST",
+                "id": "g0",
+                "defining-class": "org.springframework.http.HttpStatus"
+            },
+            "g1": {
+                "name": "OK",
+                "id": "g1",
+                "defining-class": "org.springframework.http.HttpStatus"
+            },
+            "g2": {
+                "name": "CREATED",
+                "id": "g2",
+                "defining-class": "org.springframework.http.HttpStatus"
+            },
+            "g3": {
+                "name": "INTERNAL_SERVER_ERROR",
+                "id": "g3",
+                "defining-class": "org.springframework.http.HttpStatus"
+            },
+            "g4": {
+                "name": "separator",
+                "id": "g4",
+                "defining-class": "java.io.File"
+            },
+            "g5": {
+                "name": "CREATE",
+                "id": "g5",
+                "defining-class": "com.melardev.spring.shoppingcartweb.enums.CrudOperation",
+                "locations-of-static-assignments": [
+                    "line 4, com.melardev.spring.shoppingcartweb.enums.CrudOperation"
+                ]
+            },
+            "g6": {
+                "name": "$SwitchMap$com$melardev$spring$shoppingcartweb$enums$CrudOperation",
+                "id": "g6",
+                "defining-class": "com.melardev.spring.shoppingcartweb.controllers.TagsAndCategoriesController$1",
+                "locations-of-static-assignments": [
+                    "line 125, com.melardev.spring.shoppingcartweb.controllers.TagsAndCategoriesController$1"
+                ]
+            },
+            "g7": {
+                "name": "DESC",
+                "id": "g7",
+                "defining-class": "org.springframework.data.domain.Sort$Direction"
+            },
+            "g8": {
+                "name": "$SwitchMap$com$melardev$spring$shoppingcartweb$enums$AuthorizationPolicy",
+                "id": "g8",
+                "defining-class": "com.melardev.spring.shoppingcartweb.services.auth.delegates.CommentsAuthorizationDelegate$1",
+                "locations-of-static-assignments": [
+                    "line 38, com.melardev.spring.shoppingcartweb.services.auth.delegates.CommentsAuthorizationDelegate$1"
+                ]
+            },
+            "g9": {
+                "name": "$SwitchMap$com$melardev$spring$shoppingcartweb$enums$CrudOperation",
+                "id": "g9",
+                "defining-class": "com.melardev.spring.shoppingcartweb.controllers.ProductsController$1",
+                "locations-of-static-assignments": [
+                    "line 258, com.melardev.spring.shoppingcartweb.controllers.ProductsController$1"
+                ]
+            },
+            "g10": {
+                "name": "FORBIDDEN",
+                "id": "g10",
+                "defining-class": "org.springframework.http.HttpStatus"
+            },
+            "g11": {
+                "name": "PROCESSED",
+                "id": "g11",
+                "defining-class": "com.melardev.spring.shoppingcartweb.enums.OrderStatus",
+                "locations-of-static-assignments": [
+                    "line 4, com.melardev.spring.shoppingcartweb.enums.OrderStatus"
+                ]
+            },
+            "g12": {
+                "name": "$SwitchMap$com$melardev$spring$shoppingcartweb$enums$CrudOperation",
+                "id": "g12",
+                "defining-class": "com.melardev.spring.shoppingcartweb.controllers.CommentsController$1",
+                "locations-of-static-assignments": [
+                    "line 132, com.melardev.spring.shoppingcartweb.controllers.CommentsController$1"
+                ]
+            },
+            "g13": {
+                "name": "UPDATE",
+                "id": "g13",
+                "defining-class": "com.melardev.spring.shoppingcartweb.enums.CrudOperation",
+                "locations-of-static-assignments": [
+                    "line 4, com.melardev.spring.shoppingcartweb.enums.CrudOperation"
+                ]
+            },
+            "g14": {
+                "name": "DELETE",
+                "id": "g14",
+                "defining-class": "com.melardev.spring.shoppingcartweb.enums.CrudOperation",
+                "locations-of-static-assignments": [
+                    "line 4, com.melardev.spring.shoppingcartweb.enums.CrudOperation"
+                ]
+            },
+            "g15": {
+                "name": "HS512",
+                "id": "g15",
+                "defining-class": "io.jsonwebtoken.SignatureAlgorithm"
+            },
+            "g16": {
+                "name": "DAYS",
+                "id": "g16",
+                "defining-class": "java.time.temporal.ChronoUnit"
+            }
+        }
+    }
+
+}
