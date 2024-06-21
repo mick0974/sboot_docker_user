@@ -1,4 +1,4 @@
 name: SBootApiEcomMVCHibernate_USER
 specificationFileName: SBootApiEcomMVCHibernate_USER.json
 authenticationCommands:
-  default: python3 apis/SBootApiEcomMVCHibernate/scripts/auth.py
+  default: python3 apis/SBootApiEcomMVCHibernate_USER/scripts/auth.py
